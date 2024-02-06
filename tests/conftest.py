@@ -9,7 +9,7 @@ import config
 import utils
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture(scope='session')
 def android_management():
     options = UiAutomator2Options().load_capabilities({
         'platformVersion': config.settings.platformVersion,
