@@ -13,7 +13,7 @@ class Settings(pydantic.BaseModel):
     deviceName: str = 'Google Pixel 7'
     platformVersion: str = "13.0"
     app: str = 'bs://sample.app'
-    timeout: float = 10.0
+    timeout: float = 5.0
 
 
 settings = Settings()
