@@ -61,9 +61,9 @@ def ios_management():
     browser.config.driver_remote_url = config.settings.remote_url
     browser.config.driver_options = options
 
-    browser.config._wait_decorator = support._logging.wait_with(
-        context=allure_commons._allure.StepContext
-    )
+    # browser.config._wait_decorator = support._logging.wait_with(
+    #     context=allure_commons._allure.StepContext
+    # )
 
     yield
 
