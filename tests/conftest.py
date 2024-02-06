@@ -3,6 +3,7 @@ import allure_commons
 import pytest
 from appium.options.android import UiAutomator2Options
 from appium.options.ios import XCUITestOptions
+from appium.webdriver import webdriver
 from selene import browser, support
 
 import config
@@ -19,13 +20,15 @@ def android_management():
             'projectName': 'First Python project',
             'buildName': 'browserstack-build-1',
             'sessionName': 'BStack first_test',
-            'userName': config.settings.bstack_userName,
-            'accessKey': config.settings.bstack_accessKey,
+            'userName': config.settings.USERNAME,
+            'accessKey': config.settings.ACCESKEY,
         }
     })
     browser.config.timeout = config.settings.timeout
+
     browser.config.driver_remote_url = config.settings.remote_url
     browser.config.driver_options = options
+
     browser.config._wait_decorator = support._logging.wait_with(
         context=allure_commons._allure.StepContext
     )
@@ -52,14 +55,16 @@ def ios_management():
             'projectName': 'First Python project',
             'buildName': 'browserstack-build-1',
             'sessionName': 'BStack first_test',
-            'userName': config.settings.bstack_userName,
-            'accessKey': config.settings.bstack_accessKey,
+            'userName': config.settings.USERNAME,
+            'accessKey': config.settings.ACCESKEY,
         }
     })
     browser.config.timeout = config.settings.timeout
 
-    browser.config.driver_remote_url = config.settings.remote_url
-    browser.config.driver_options = options
+    browser.config.driver = webdriver.Remote(
+        config.settings.remote_url,
+        options=options
+    )
 
     browser.config._wait_decorator = support._logging.wait_with(
         context=allure_commons._allure.StepContext

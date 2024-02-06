@@ -8,7 +8,7 @@ import config
 def attach_bstack_video(session_id):
     bstack_session = requests.get(
         f'https://api.browserstack.com/app-automate/sessions/{session_id}.json',
-        auth=(config.settings.bstack_userName, config.settings.bstack_accessKey),
+        auth=(config.settings.USERNAME, config.settings.ACCESKEY),
     ).json()
     print(bstack_session)
     video_url = bstack_session['automation_session']['video_url']
