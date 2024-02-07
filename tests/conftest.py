@@ -20,8 +20,8 @@ def android_management():
             'projectName': 'First Python project',
             'buildName': 'browserstack-build-1',
             'sessionName': 'BStack first_test',
-            'userName': config.settings.USERNAME,
-            'accessKey': config.settings.ACCESKEY,
+            'userName': config.settings.USER_NAME,
+            'accessKey': config.settings.ACCESS_KEY,
         }
     })
     browser.config.timeout = config.settings.timeout
@@ -60,8 +60,8 @@ def ios_management():
             'projectName': 'First Python project',
             'buildName': 'browserstack-build-1',
             'sessionName': 'BStack first_test',
-            'userName': config.settings.USERNAME,
-            'accessKey': config.settings.ACCESKEY,
+            'userName': config.settings.USER_NAME,
+            'accessKey': config.settings.ACCESS_KEY,
         }
     })
     browser.config.timeout = config.settings.timeout

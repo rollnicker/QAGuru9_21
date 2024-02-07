@@ -7,8 +7,8 @@ import pydantic
 class Settings(pydantic.BaseModel):
     dotenv.load_dotenv()
 
-    USERNAME: str = os.getenv('USERNAME')
-    ACCESKEY: str = os.getenv('ACCESKEY')
+    USER_NAME: str = os.getenv('USER_NAME')
+    ACCESS_KEY: str = os.getenv('KEYSPACE')
     remote_url: str = os.getenv('REMOTE_URL')
     deviceName: str = 'Google Pixel 7'
     platformVersion: str = "13.0"
