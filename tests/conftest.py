@@ -1,13 +1,46 @@
 import allure
 import allure_commons
 import pytest
+from appium import webdriver
 from appium.options.android import UiAutomator2Options
 from appium.options.ios import XCUITestOptions
-from appium import webdriver
 from selene import browser, support
 
 import config
 import utils
+
+
+@pytest.fixture(scope='function')
+def real_management():
+    options = UiAutomator2Options().load_capabilities({
+        'platformName': 'Android',
+        # 'platformVersion': config.Settings.platformVersion,
+        'deviceName': 'Pixel 7 PRO',
+        'appWaitActivity': 'org.wikipedia.*',
+        'app': '/Users/rollnick/Downloads/app-alpha-universal-release.apk'
+    })
+    # browser.config.timeout = config.Settings.timeout
+
+    # browser.config.driver_remote_url = config.settings.remote_url
+    # browser.config.driver_options = options
+
+    browser.config.driver = webdriver.Remote(
+        'http://127.0.0.1:4723/wd/hub',
+        options=options
+    )
+
+    # browser.config._wait_decorator = support._logging.wait_with(
+    #     context=allure_commons._allure.StepContext
+    # )
+
+    yield
+
+    # session_id = browser.driver.session_id
+    utils.allure.attach_screenshot()
+    utils.allure.attach_logs()
+    with allure.step('tear down app session'):
+        browser.quit()
+    # utils.allure.attach_bstack_video(session_id)
 
 
 @pytest.fixture(scope='function')
