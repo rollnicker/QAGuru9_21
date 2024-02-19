@@ -33,7 +33,7 @@ def test_search_wikpedia(real_management):
 
     with step('Type search'):
         browser.all((AppiumBy.CLASS_NAME, "android.widget.TextView")).element_by(
-            have.text("Поиск по Википедии")).click()
+            have.text("Search Wikipedia")).click()
         browser.element((AppiumBy.ID, "org.wikipedia.alpha:id/search_src_text")).type('Wikipedia')
 
     with step('Verify content found'):

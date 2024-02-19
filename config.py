@@ -8,7 +8,7 @@ from appium.options.android import UiAutomator2Options
 
 context_type = Literal["bs", "local_emulator", "local_real"]
 class Config(BaseModel):
-    dotenv.load_dotenv('/Users/rollnick/Desktop/QAGuruProjects/QAGuru9_21/.env.local_real')
+    dotenv.load_dotenv('/Users/rollnick/Desktop/QAGuruProjects/QAGuru9_21/.env.local_emulator')
     context: str
     USER_NAME: str = os.getenv('USER_NAME')
     ACCESS_KEY: str = os.getenv('KEYSPACE')
