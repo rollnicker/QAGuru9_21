@@ -31,7 +31,7 @@ def context(request):
     return request.config.getoption("--context")
 
 @pytest.fixture(scope='function')
-def new_management():
+def new_management(context):
     from config import config
 
     options = config.to_driver_options(context='local_emulator')
