@@ -5,7 +5,9 @@ from selene import browser, have
 
 
 @pytest.mark.local_emulator
-def test_check_welcome_screens(real_management):
+@pytest.mark.local_real
+@pytest.mark.bs
+def test_check_welcome_screens(context):
     with (step('Skip welcome screens')):
         browser.element((AppiumBy.ID, "org.wikipedia.alpha:id/primaryTextView")).should(
             have.text("The Free Encyclopedia"))
